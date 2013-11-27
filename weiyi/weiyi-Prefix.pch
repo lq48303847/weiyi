@@ -1,0 +1,37 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#define WTHTTP_SERVER_IP @"http://www.haoy1314.com/"
+
+#define IF_IOS7 ([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0)
+
+#define VIEW_DEFAULT_Y (self.navigationController==nil?0:( ([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0) ?44:0) )
+
+typedef enum{
+    WTReturnCodeSuccess=0,              //成功 1
+    WTReturnCodeUserOrPasswdError=1,    //用户或密码错误 2
+    WTReturnCodeUserAlreadyExists=2,    //用户已经存在 3
+    WTReturnCodeUploadFileError=3,      //上传文件失败 4
+    WTReturnCodeUnknownError=4,     //未知错误 -1
+    WTReturnCodeMissingParameter=5,     //缺少参数 404
+    WTReturnCodeAPIKEYInvalid=6,         //APIKEY无效/已过期 500
+    WTReturnCodeServerConnectError=7,    //和服务器连接错误
+}WTReturnCode;
+
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "WTHttp.h"
+    #import "WTUserInfo.h"
+    #import "UIImageView+WebCache.h"
+#endif
